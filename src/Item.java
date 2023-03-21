@@ -1,9 +1,10 @@
 public class Item {
-    private name;
+    private String name;
     private int health = 20;
     private boolean alive = true;
+
     public Item(String itemName){
-        name = itemName;
+        this.name = itemName;
     }
     public void hurt(){
         health -= 2;
@@ -16,9 +17,10 @@ public class Item {
     }
 
     public boolean alive_check(){
-        if health <= 0;
+        if (health <= 0) {
             System.out.println(name + " is now at " + health + " health. " + name + " has beem eliminated.");
             return false;
+        }
         System.out.println(name + " is now at " + health + " health.");
         return true;
     }
