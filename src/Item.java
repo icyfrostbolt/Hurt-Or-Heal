@@ -8,20 +8,20 @@ public class Item {
     }
     public void hurt(){
         health -= 2;
-        alive = alive_check();
     }
 
     public void heal(){
         health += 1;
-        alive = alive_check();
+        alive = aliveCheck();
     }
 
-    public boolean alive_check(){
+    public boolean aliveCheck(){
         if (health <= 0) {
-            System.out.println(name + " is now at " + health + " health. " + name + " has beem eliminated.");
+            System.out.println(name + " is now at " + health + " health. " + name + " has been eliminated.");
             return false;
         }
         System.out.println(name + " is now at " + health + " health.");
         return true;
     }
+
 }
