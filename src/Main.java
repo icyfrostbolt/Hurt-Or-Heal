@@ -16,32 +16,34 @@ public class Main {
                 itemList.put(name, itemToBeAdded);
             }
         }
+        boolean hurt = true;
         while (true) {
-            Scanner hurt = new Scanner(System.in);
-            String hurtStringNames = names.toString().substring(1,names.toString().length()-1);
-            System.out.println(hurtStringNames + " are still alive");
-            System.out.print("Hurt: ");
-            String hurtName = hurt.nextLine();
-            Item hurt_item = itemList.get(hurtName);
-            hurt_item.hurt();
-            if (!hurt_item.aliveCheck()){
-                itemList.remove(hurt_item);
-                names.remove(hurtName);
-                finalNames.add(0, hurtName);
-                int size = names.size()+1;
-                System.out.println("Their placement was " + size + ".");
-                if (names.size() == 1){
-                    finalNames.add(0, names.get(0));
-                    break;
+            Scanner scan = new Scanner(System.in);
+            String stringNames = names.toString().substring(1,names.toString().length()-1);
+            System.out.println(stringNames + " are still alive");
+            if (hurt){
+                System.out.print("Hurt: ");
+            } else {
+                System.out.print("Heal: ");
+            }
+            String scanName = scan.nextLine();
+            Item item = itemList.get(scanName);
+            if (hurt){
+                item.hurt();
+                if (!item.aliveCheck()){
+                    itemList.remove(item);
+                    names.remove(scanName);
+                    finalNames.add(0, scanName);
+                    int size = names.size()+1;
+                    System.out.println("Their placement was " + size + ".");
+                    if (names.size() == 1){
+                        finalNames.add(0, names.get(0));
+                        break;
+                    }
+            } else {
+                item.heal();
                 }
             }
-            Scanner heal = new Scanner(System.in);
-            String healStringNames = names.toString().substring(1,names.toString().length()-1);
-            System.out.println(healStringNames + " are still alive");
-            System.out.print("Heal: ");
-            String healName = heal.nextLine();
-            Item heal_item = itemList.get(healName);
-            heal_item.heal();
         }
         int count = 1;
         System.out.println("\nFinal placements:");
