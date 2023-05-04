@@ -30,6 +30,7 @@ public class Main {
             Item item = itemList.get(scanName);
             if (hurt){
                 item.hurt();
+                hurt = false;
                 if (!item.aliveCheck()){
                     itemList.remove(item);
                     names.remove(scanName);
@@ -40,11 +41,12 @@ public class Main {
                         finalNames.add(0, names.get(0));
                         break;
                     }
+                }
             } else {
                 item.heal();
+                hurt = true;
                 }
             }
-        }
         int count = 1;
         System.out.println("\nFinal placements:");
         for (String finalName : finalNames){

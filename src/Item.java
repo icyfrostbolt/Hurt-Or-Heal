@@ -1,7 +1,6 @@
 public class Item {
     private String name;
     private int health = 20;
-    private boolean alive = true;
 
     public Item(String itemName){
         this.name = itemName;
@@ -12,7 +11,7 @@ public class Item {
 
     public void heal(){
         health += 1;
-        alive = aliveCheck();
+        aliveCheck();
     }
 
     public boolean aliveCheck(){
